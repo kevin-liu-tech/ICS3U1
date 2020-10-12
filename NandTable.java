@@ -10,5 +10,6 @@ public class NandTable {
         boolean b = keyboard.nextBoolean();
         boolean finalOutput = !(a & b);
 		System.out.println("Boolean is: " + finalOutput);
-	}
+        keyboard.close();
+    }
 }

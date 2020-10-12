@@ -12,6 +12,7 @@ public class HeronsFormula {
         System.out.println("Please enter your c value: ");
         double c = keyboard.nextDouble();
         System.out.println("The area of your triangle is: " + 0.25 * Math.sqrt(4 * a * a * b * b - Math.pow(a * a + b * b - c * c, 2)) + " square units.");
+        keyboard.close();
     }
 
 }

@@ -12,5 +12,6 @@ public class QuadraticFormula {
         double c = keyboard.nextDouble();
         System.out.println("Root 1 is " + (-b + Math.sqrt(b * b - 4*a*c)) / (2*a) + " and Root 2 is " + (-b - Math.sqrt(b * b - 4*a*c)) / (2*a));
         System.out.println("Thank you for using this program! Have a good day!");
+        keyboard.close();
     }
 }

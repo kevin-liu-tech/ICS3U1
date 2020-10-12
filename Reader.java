@@ -8,5 +8,6 @@ public class Reader {
         int input = keyboard.nextInt();
         System.out.println("The integer that you have entered is: " + input);
         System.out.println("Thank you for your time! Have a good day.");
+        keyboard.close();
     }
 }
