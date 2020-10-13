@@ -44,7 +44,7 @@ public class AsymptoteFinder {
                     break;
                 default: 
                     System.out.println("Asymptote is Decic.");
-                    break; // this is a comment to show code
+                    break;
             }
         }
     }
