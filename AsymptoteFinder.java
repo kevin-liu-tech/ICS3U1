@@ -42,8 +42,11 @@ public class AsymptoteFinder {
                 case 9: 
                     System.out.println("Asymptote is Nonic.");
                     break;
-                default: 
+                case 10: 
                     System.out.println("Asymptote is Decic.");
+                    break;
+                default:
+                    System.out.println("Sorry, we don't understand. Please enter valid m and n values.");
                     break;
             }
         }
