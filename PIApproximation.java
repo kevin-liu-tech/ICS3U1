@@ -5,6 +5,6 @@ public class PIApproximation {
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Welcome to the PI Approximation!");
         int nValue = keyboard.nextInt();
-        while 
+        
     }
 }
