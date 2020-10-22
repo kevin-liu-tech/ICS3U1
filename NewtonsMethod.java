@@ -16,6 +16,7 @@ public class NewtonsMethod {
             x0 = x1;
             x1 = x0 - f(x0)/d(x0);
         }
+        System.out.println("The root closest to your guess is:" + x1);
         keyboard.close();
     }
 }
