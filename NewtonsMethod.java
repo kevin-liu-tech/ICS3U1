@@ -12,7 +12,6 @@ public class NewtonsMethod {
         System.out.println("Welcome to Newton's Method. Please enter your initial root guess!");
         double x0 = keyboard.nextDouble();
         double x1 = x0 - f(x0)/d(x0);
-        boolean answer = false;
         while ((x1 - x0) > 0.0001) {   
             x0 = x1;
             x1 = x0 - f(x0)/d(x0);
