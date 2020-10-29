@@ -13,9 +13,6 @@ public class PolynomialEvaluator {
         for (String result : results) { 
             if (result.contains("f") || result.contains("=")) {
                 continue loop;
-                /*double coefficient = Double.parseDouble(result.substring(result.indexOf("=") + 1, result.indexOf("x^")));
-                int exponent = Integer.parseInt(result.substring(result.indexOf("^") + 1));
-                sumTotal += Math.pow(x, exponent) * coefficient; */
             }
             if (result.contains("x") && result.contains("^")) {
                 double coefficient = Double.parseDouble(result.substring(0, result.indexOf("x")));
@@ -32,5 +29,7 @@ public class PolynomialEvaluator {
         System.out.println("f(" + x + ") is " + sumTotal);
         keyboard.close();
     }
-
 }
+                /*double coefficient = Double.parseDouble(result.substring(result.indexOf("=") + 1, result.indexOf("x^")));
+                int exponent = Integer.parseInt(result.substring(result.indexOf("^") + 1));
+                sumTotal += Math.pow(x, exponent) * coefficient; */
