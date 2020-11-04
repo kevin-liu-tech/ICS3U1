@@ -1,35 +1,40 @@
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class PolynomialEvaluator {
-
+    
     public static void main (String[] args) {
-        System.out.println("Welcome to the Polynomial Evaluator. Please input your polynomial with the style guidelines that are assumed.");
         Scanner keyboard = new Scanner(System.in);
-        String[] results = keyboard.nextLine().split("\\s");
-        System.out.println("Please enter your x value: ");
-        double x = keyboard.nextDouble();
-        double sumTotal = 0;
-        loop:
-        for (String result : results) { 
-            if (result.contains("f") || result.contains("=")) {
-                continue loop;
-            }
-            if (result.contains("x") && result.contains("^")) {
-                double coefficient = Double.parseDouble(result.substring(0, result.indexOf("x")));
-                int exponent = Integer.parseInt(result.substring(result.indexOf("^") + 1));
-                sumTotal += Math.pow(x, exponent) * coefficient;
-            } else if (!result.contains("x") && result.contains("^")){
-                sumTotal += Math.pow(x, Integer.parseInt(result.substring(result.indexOf("^") + 1)));
-            } else if (result.contains("x") && !result.contains("^")) {
-                sumTotal += x * Double.parseDouble(result.substring(0, result.indexOf("x")));
+        double xValue = 0;
+        double finalAnswer = 0;
+        double coefficient = 0;
+        double exponent = 0;
+
+        System.out.println("Welcome to the Polynomial Evaluator. Please enter your polynomial in the correct form.");
+        StringTokenizer st = new StringTokenizer(keyboard.nextLine());
+        System.out.println("Please enter your x-value.");
+        xValue = keyboard.nextDouble();
+
+        while (st.hasMoreTokens()) {
+            String currentTerm = st.nextToken();
+
+            if (currentTerm.contains("f") || currentTerm.contains("=")) { 
+                coefficient = Double.parseDouble(currentTerm.substring(currentTerm.indexOf("=") + 1, currentTerm.indexOf("x^")));
+                exponent = Integer.parseInt(currentTerm.substring(currentTerm.indexOf("^") + 1));
+                finalAnswer += coefficient * Math.pow(xValue, exponent);
+            } else if (currentTerm.contains("x") || currentTerm.contains("^")) { 
+                coefficient = Double.parseDouble(currentTerm.substring(0, currentTerm.indexOf("x")));
+                exponent = Integer.parseInt(currentTerm.substring(currentTerm.indexOf("^") + 1));
+                finalAnswer +=  coefficient * Math.pow(xValue, exponent);
+            } else if (!currentTerm.contains("x") && currentTerm.contains("^")){ 
+                finalAnswer += Math.pow(xValue, Integer.parseInt(currentTerm.substring(currentTerm.indexOf("^") + 1)));
+            } else if (currentTerm.contains("x") && !currentTerm.contains("^")) {
+                finalAnswer += xValue * Double.parseDouble(currentTerm.substring(0, currentTerm.indexOf("x")));
             } else {
-                sumTotal += Integer.parseInt(result);
+                finalAnswer += Integer.parseInt(currentTerm);
             }
-        } 
-        System.out.println("f(" + x + ") is " + sumTotal);
+        }
+        System.out.println("f(" + xValue + ")=" + finalAnswer);
         keyboard.close();
     }
 }
-                /*double coefficient = Double.parseDouble(result.substring(result.indexOf("=") + 1, result.indexOf("x^")));
-                int exponent = Integer.parseInt(result.substring(result.indexOf("^") + 1));
-                sumTotal += Math.pow(x, exponent) * coefficient; */
