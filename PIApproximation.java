@@ -8,12 +8,11 @@ public class PIApproximation {
         while (true) {
             System.out.println("Please enter your n value:");
             int maxIterations = keyboard.nextInt();
-            double equation = 0;
+            double equation = 0; 
             double finalOutputSum = 0;
             
             if (maxIterations < 0) {
                 System.out.println("Error, please enter a valid positive integer.");
-                System.out.println("Would you like to guess again? (Press 1 for yes or any other number for no): ");
             } else {
                 for (int i = 0; i < maxIterations; i ++) {
                     equation = Math.pow(-1, i)/(i * 2 + 1);
