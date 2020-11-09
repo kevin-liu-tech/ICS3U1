@@ -8,7 +8,6 @@ public class PowerRule {
         String secondDerivative = "";
         double currentCoefficient = 0;
         int currentExponent = 0;
-        int secondExponent = 0;
 
         System.out.println("Welcome to the Power Rule. This program will calculate your first and second derivatives based on your input values.");
         System.out.println("Please enter your coefficients of the function and denote each seperate term with a space:");
