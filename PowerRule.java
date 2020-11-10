@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 public class PowerRule {
-    public static void main (String[] args) {
 
+    public static void main (String[] args) {
         Scanner keyboard = new Scanner(System.in);
         String firstDerivative = "";
         String secondDerivative = "";

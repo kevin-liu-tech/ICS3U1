@@ -4,7 +4,6 @@ import java.util.StringTokenizer;
 public class PolynomialEvaluator {
     
     public static void main (String[] args) {
-        
         Scanner keyboard = new Scanner(System.in);
         double xValue = 0;
         double finalAnswer = 0;
