@@ -8,6 +8,7 @@ public class PowerRule {
         String secondDerivative = "";
         double currentCoefficient = 0;
         int currentExponent = 0;
+        boolean firstTerm = true;
 
         System.out.println("Welcome to the Power Rule. This program will calculate your first and second derivatives based on your input values.");
         System.out.println("Please enter your coefficients of the function and denote each seperate term with a space:");
@@ -22,54 +23,30 @@ public class PowerRule {
                 currentCoefficient = Double.parseDouble(coefficients[i]);
                 currentExponent = Integer.parseInt(exponents[i]);
 
-                if (currentCoefficient >= 0) {
+                if (!firstTerm && currentCoefficient >= 0) {
                     firstDerivative += "+";
-                } else {
-                    firstDerivative += "";
+                    secondDerivative += "+";
                 }
 
-                if (currentExponent - 1 == 1 && currentCoefficient == 1) {
-                    firstDerivative += "+ x ";
-                } else if (currentExponent - 1 == 0) {
-                    firstDerivative += currentCoefficient + " ";
-                } else if (currentExponent - 1 == 1) {
-                    firstDerivative += currentCoefficient * currentExponent + "x ";
-                } else if (currentCoefficient == 1 && currentExponent - 1 != 0) {
-                    firstDerivative += "x^" + (currentExponent - 1);
-                } else {
-                    firstDerivative += (currentCoefficient * currentExponent) + "x^" + (currentExponent - 1) + " ";
+                if (currentExponent > 1) {
+                    double newCoefficient = currentCoefficient * currentExponent;
+                    double newExponent = currentExponent - 1;
+                    firstDerivative += newCoefficient + "x^" + newExponent + " ";
+
+                    if (newExponent > 1) {
+                        secondDerivative += (newCoefficient * newExponent) + "x^" + (newExponent - 1) + " ";
+                    } else {
+                        secondDerivative += newCoefficient;
+                    }
+                } else if (currentExponent == 1) {
+                    firstDerivative += currentCoefficient;
+                    secondDerivative = secondDerivative.substring(0, secondDerivative.length() - 1);
                 }
-            }
-            loop:
-            for (int i = 0; i < coefficients.length; i++) {
-                currentCoefficient = Double.parseDouble(coefficients[i]) * Integer.parseInt(exponents[i]);
-                currentExponent = Integer.parseInt(exponents[i]) - 1;
-                if (currentCoefficient > 0 && i != 0) {
-                    secondDerivative += "+";
-                } else if (currentCoefficient < 0){
-                    secondDerivative += "";
-                } else {
-                    secondDerivative += "";
-                }
-                if (currentExponent - 1 == 1 && currentCoefficient == 1) {
-                    secondDerivative += "+ x ";
-                } else if (currentCoefficient == 0.0 || currentExponent  - 1 < 0) {
-                    secondDerivative += "";
-                } else if (currentExponent - 1 == 0) {
-                    secondDerivative += currentCoefficient + " ";
-                } else if (currentExponent - 1 == 1) {
-                    secondDerivative += currentCoefficient * currentExponent + "x ";
-                } else if (currentCoefficient == 1 && currentExponent - 1 < 0) {
-                    secondDerivative += "";
-                } else if (currentExponent < 0) {
-                    continue loop;
-                } else {
-                    secondDerivative += (currentCoefficient * currentExponent) + "x^" + (currentExponent - 1) + " ";
-                }
+                firstTerm = false;
             }
         }
-        System.out.println("Your first derivative is: f'(x) = " + firstDerivative.substring(1));
-        System.out.println("Your second derivative is: f''(x) = " + secondDerivative.substring(0, secondDerivative.length() - 1));
+        System.out.println("Your first derivative is: f'(x) = " + firstDerivative);
+        System.out.println("Your second derivative is: f''(x) = " + secondDerivative);
         keyboard.close();
     }
 
