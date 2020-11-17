@@ -12,6 +12,7 @@ public class KevinLiu {
         String[][] board = {{"$", "$", "$"}, {"$", "$", "$"}, {"$", "$", "$"}};
         ticTacToeBoard(board);
         playerTurn(board);
+        System.out.println("Thank you for playing! The game's over!");
     }
 
     public static void ticTacToeBoard(String[][] board) {
